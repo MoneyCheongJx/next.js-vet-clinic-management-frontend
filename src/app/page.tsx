@@ -1,101 +1,153 @@
-import Image from "next/image";
+"use client";
+
+import { Card, Col, Row, Typography, Layout, Menu, Image } from "antd";
+import { useRouter } from "next/navigation";
+
+const { Title, Paragraph } = Typography;
+const { Header, Content, Footer } = Layout;
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const menuItems = [
+    { label: "Home", key: "home" },
+    { label: "Appointment", key: "appointment" },
+    { label: "Client", key: "client" },
+    { label: "Pet Patient", key: "pet" },
+    { label: "Lab Diagnostic", key: "lab" },
+    { label: "Medical Inventory", key: "inventory" },
+    { label: "Staff", key: "staff" },
+    { label: "Ward", key: "ward" },
+  ];
+
+  const handleMenuClick = (e: { key: string }) => {
+    switch (e.key) {
+      case "home":
+        router.push("/");
+        break;
+      case "appointment":
+        router.push("/appointment");
+        break;
+      case "client":
+        router.push("/client");
+        break;
+      case "pet":
+        router.push("/pet");
+        break;
+      case "lab":
+        router.push("/lab-diagnostic");
+        break;
+      case "inventory":
+        router.push("/inventory");
+        break;
+      case "staff":
+        router.push("/staff");
+        break;
+      case "ward":
+        router.push("/ward");
+        break;
+      default:
+        router.push("/");
+        break;
+    }
+  };
+
+  return (
+    <Layout style={{ minHeight: "100vh" }}>
+      <Header style={{ background: "#fff", padding: "0 50px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Title level={4} style={{ margin: 0 }}>
+            Veterinary Clinic Management
+          </Title>
+          <Menu
+            mode="horizontal"
+            defaultSelectedKeys={["home"]}
+            onClick={handleMenuClick}
+            style={{ lineHeight: "64px" }}
+            items={menuItems}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </Header>
+
+      <Content style={{ padding: "50px 50px" }}>
+        <Row
+          gutter={[16, 0]}
+          justify="space-between"
+          align="middle"
+          style={{ padding: "50px 20px" }}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <Col span={12} style={{ paddingRight: "20px" }}>
+            <Title level={2}>Welcome to our Veterinary Clinic</Title>
+            <Paragraph style={{ textAlign: "justify" }}>
+              We offer professional care for your pets, including check-ups,
+              vaccinations, surgeries, and more. You can easily manage
+              appointments, track your pet’s records, and keep up with their
+              treatments. Our goal is to make sure your pets are happy and
+              healthy by providing the best care in a safe and friendly
+              environment.
+            </Paragraph>
+          </Col>
+          <Col span={12}>
+            <Image
+              src="/image.jpg"
+              alt="Veterinary Clinic"
+              preview={false}
+              style={{ marginBottom: 20 }}
+            />
+          </Col>
+        </Row>
+        <Row gutter={[16, 0]} justify="space-between" align="middle">
+          <Col span={8}>
+            <Card title="Our Services" bordered={false}>
+              <Paragraph style={{ textAlign: "justify" }}>
+                We offer a variety of services for your pets, including
+                check-ups, vaccinations, dental care, surgeries, and emergency
+                treatments. Each service is designed to ensure that your pets
+                stay healthy and happy, with personalized care tailored to their
+                needs. Our clinic strives to provide the highest quality
+                veterinary services in a caring and professional environment.
+              </Paragraph>
+            </Card>
+          </Col>
+          <Col span={8}>
+            <Card title="Expert Care" bordered={false}>
+              <Paragraph style={{ textAlign: "justify" }}>
+                Our team of experienced veterinarians is committed to providing
+                the best possible care for your pets. With years of expertise in
+                the field, we offer a wide range of treatments from preventive
+                health care to specialized medical services. Your pet's
+                well-being is our top priority, and we treat every animal with
+                compassion and respect.
+              </Paragraph>
+            </Card>
+          </Col>
+          <Col span={8}>
+            <Card title="Convenience" bordered={false}>
+              <Paragraph style={{ textAlign: "justify" }}>
+                We make pet care more convenient by allowing you to manage
+                appointments, track medical records, and access important health
+                information online. Our easy-to-use platform ensures you stay on
+                top of your pet’s needs. Book appointments, receive reminders,
+                and get updates all from the comfort of your home. It’s pet care
+                at your fingertips.
+              </Paragraph>
+            </Card>
+          </Col>
+        </Row>
+      </Content>
+
+      <Footer style={{ textAlign: "center" }}>
+        <p>
+          &copy; {new Date().getFullYear()} Veterinary Clinic. All Rights
+          Reserved.
+        </p>
+      </Footer>
+    </Layout>
   );
 }
