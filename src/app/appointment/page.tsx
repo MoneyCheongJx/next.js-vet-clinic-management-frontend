@@ -44,8 +44,6 @@ export default function Home() {
     { label: "Pet Patient", key: "pet" },
     { label: "Lab Diagnostic", key: "lab" },
     { label: "Medical Inventory", key: "inventory" },
-    { label: "Staff", key: "staff" },
-    { label: "Ward", key: "ward" },
   ];
 
   const handleMenuClick = (e: { key: string }) => {
@@ -67,12 +65,6 @@ export default function Home() {
         break;
       case "inventory":
         router.push("/inventory");
-        break;
-      case "staff":
-        router.push("/staff");
-        break;
-      case "ward":
-        router.push("/ward");
         break;
       default:
         router.push("/");
@@ -309,22 +301,34 @@ export default function Home() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Header style={{ background: "#fff", padding: "0 50px" }}>
+      <Header style={{ background: "#fff", padding: "0 50px 0px 50px" }}>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
             alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
           }}
         >
-          <Title level={4} style={{ margin: 0 }}>
+          <Title
+            level={4}
+            style={{
+              margin: 0,
+              flexShrink: 1,
+              paddingRight: "291px",
+            }}
+          >
             Veterinary Clinic Management
           </Title>
           <Menu
             mode="horizontal"
             defaultSelectedKeys={["appointment"]}
             onClick={handleMenuClick}
-            style={{ lineHeight: "64px" }}
+            style={{
+              flexGrow: 1,
+              lineHeight: "64px",
+              whiteSpace: "nowrap",
+            }}
             items={menuItems}
           />
         </div>
