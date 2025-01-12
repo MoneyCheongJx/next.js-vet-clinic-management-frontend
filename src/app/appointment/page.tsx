@@ -161,12 +161,7 @@ export default function Home() {
     setIsModalVisible(false);
   };
 
-  const handleDelete = (key: string) => {
-    const appointmentToDelete = appointments.find(
-      (appointment) => appointment.key === key
-    );
-    if (!appointmentToDelete) return;
-
+  const handleDelete = (documentId: string) => {
     Modal.confirm({
       title: "Are you sure you want to delete this appointment record?",
       content: "Once deleted, this action cannot be undone.",
@@ -177,7 +172,7 @@ export default function Home() {
       onOk: () => {
         axios
           .delete(
-            `http://localhost:8080/appointment/delete?documentId=${appointmentToDelete.documentId}`
+            `http://localhost:8080/appointment/delete?documentId=${documentId}`
           )
           .then(() => {
             axios
@@ -291,7 +286,7 @@ export default function Home() {
           <Button onClick={() => handleEdit(record)} type="link">
             Edit
           </Button>
-          <Button onClick={() => handleDelete(record.key)} type="link" danger>
+          <Button onClick={() => handleDelete(record?.documentId)} type="link" danger>
             Delete
           </Button>
         </div>
@@ -495,8 +490,8 @@ export default function Home() {
                   ]}
                 >
                   <Select placeholder="Select pet gender">
-                    <Select.Option value="male">Male</Select.Option>
-                    <Select.Option value="female">Female</Select.Option>
+                    <Select.Option value="Male">Male</Select.Option>
+                    <Select.Option value="Female">Female</Select.Option>
                   </Select>
                 </Form.Item>
               </Panel>
