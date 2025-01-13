@@ -299,7 +299,7 @@ export default function LabDiagnostic() {
 
         <Row gutter={16}>
           {filteredAppointments.map((appointment) => (
-            <Col span={8} key={appointment.documentId}>
+            <Col span={8} key={appointment.documentId} style={{paddingBottom: "16px"}}>
               <Card
                 title={appointment.date}
                 bordered={false}
@@ -456,12 +456,12 @@ export default function LabDiagnostic() {
                   <Input placeholder="Test Result" />
                 </Form.Item>
                 <Form.Item
-                  label="Appointment Date"
+                  label="Test Date"
                   name="appointmentDate"
                   rules={[
                     {
                       required: true,
-                      message: "Please select the appointment date",
+                      message: "Please select the test date",
                     },
                   ]}
                 >
