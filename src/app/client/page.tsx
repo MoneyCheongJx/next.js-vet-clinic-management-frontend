@@ -256,7 +256,7 @@ export default function Client() {
       width: 200,
       align: "center",
       render: (record: any) => {
-        const fullAddress = `${record.address}, ${record.city}, ${record.postalCode}, ${record.state}`;
+        const fullAddress = `${record.address}, ${record.postalCode} ${record.city}, ${record.state}`;
         return <span>{fullAddress}</span>;
       },
     },
@@ -298,7 +298,7 @@ export default function Client() {
             style={{
               margin: 0,
               flexShrink: 1,
-              paddingRight: "291px",
+              paddingRight: "271px",
             }}
           >
             Veterinary Clinic Management
@@ -460,18 +460,6 @@ export default function Client() {
                   <Input placeholder="Address" />
                 </Form.Item>
                 <Form.Item
-                  label="City"
-                  name="city"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please enter the city",
-                    },
-                  ]}
-                >
-                  <Input placeholder="City" />
-                </Form.Item>
-                <Form.Item
                   label="Postal code"
                   name="postalCode"
                   rules={[
@@ -482,6 +470,18 @@ export default function Client() {
                   ]}
                 >
                   <Input placeholder="Postal code" />
+                </Form.Item>
+                <Form.Item
+                  label="City"
+                  name="city"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please enter the city",
+                    },
+                  ]}
+                >
+                  <Input placeholder="City" />
                 </Form.Item>
                 <Form.Item
                   label="State"
