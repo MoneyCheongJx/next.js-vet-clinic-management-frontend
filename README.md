@@ -4,7 +4,7 @@
 
 ## Overview
 
-The **Vet Clinic Management** is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).It is built using **Next.js** to allow  veterinary clinic staff to manage appointments, client or pet owners, pets, lab diagnostics records and medical inventories.
+The **Vet Clinic Management** is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). It is built using **Next.js** to allow  veterinary clinic staff to manage appointments, client or pet owners, pets, lab diagnostics records and medical inventories.
 
 ## Modules
 **Appointment Scheduling**: Create, update, and manage appointments.
@@ -20,7 +20,7 @@ The **Vet Clinic Management** is a [Next.js](https://nextjs.org) project bootstr
 ## Tech Stack
 **Frontend Framework**: Next.js
 
-**Programming Language**: Typescript
+**Programming Language**: Typescript & Javascript
 
 ### Prerequisites
 - **Node.js** (>=14.x.x)
