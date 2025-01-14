@@ -1,4 +1,4 @@
-## springboot-vet-clinic-management-backend
+## next.js-vet-clinic-management-frontend
 `Created by Jin Xuan`  
 `Last updated by Jin Xuan on 14/1/2025`
 
