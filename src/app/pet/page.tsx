@@ -123,13 +123,11 @@ export default function PetPatient() {
   const handleModalOk = () => {
     const values = form.getFieldsValue();
 
-    const appointmentDateTime = values.appointmentDate;
-    const date = appointmentDateTime
+    const appointmentDateTime = values.birthDate;
+    const birthDate = appointmentDateTime
       ? appointmentDateTime.format("YYYY-MM-DD")
       : "";
-    const time = appointmentDateTime ? appointmentDateTime.format("HH:mm") : "";
-    values.date = date;
-    values.time = time;
+    values.birthDate = birthDate;
 
     const apiRequest = isEditing
       ? axios.put(
@@ -189,11 +187,11 @@ export default function PetPatient() {
     setIsEditing(true);
     setCurrentAppointment(record);
 
-    const formattedDate = dayjs(record.appointmentDate);
+    const formattedDate = dayjs(record.birthDate);
 
     form.setFieldsValue({
       ...record,
-      appointmentDate: formattedDate,
+      birthDate: formattedDate,
     });
 
     setIsModalVisible(true);
@@ -336,6 +334,9 @@ export default function PetPatient() {
                       <Text strong>Breed:</Text> {appointment.breed}
                     </p>
                     <p>
+                      <Text strong>Color:</Text> {appointment.color}
+                    </p>
+                    <p>
                       <Text strong>Age:</Text> {appointment.age} years
                     </p>
                     <p>
@@ -343,6 +344,9 @@ export default function PetPatient() {
                     </p>
                     <p>
                       <Text strong>Weight:</Text> {appointment.weight} kg
+                    </p>
+                    <p>
+                      <Text strong>Birth Date:</Text> {appointment.birthDate}
                     </p>
                     {appointment.notes && (
                       <p>
@@ -419,6 +423,15 @@ export default function PetPatient() {
                   <Input placeholder="Pet Breed" />
                 </Form.Item>
                 <Form.Item
+                  label="Pet Colour"
+                  name="color"
+                  rules={[
+                    { required: true, message: "Please enter the pet's color" },
+                  ]}
+                >
+                  <Input placeholder="Pet Color" />
+                </Form.Item>
+                <Form.Item
                   label="Pet Age"
                   name="age"
                   rules={[
@@ -453,6 +466,18 @@ export default function PetPatient() {
                   ]}
                 >
                   <Input placeholder="Pet Weight" />
+                </Form.Item>
+                <Form.Item
+                  label="Pet Birth Date"
+                  name="birthDate"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please select the pet's birth date",
+                    },
+                  ]}
+                >
+                  <DatePicker style={{ width: "100%" }} />
                 </Form.Item>
                 <Form.Item label="Additional Notes" name="notes">
                   <Input.TextArea rows={4} placeholder="Additional notes" />
