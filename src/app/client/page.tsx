@@ -215,8 +215,7 @@ export default function Client() {
       key: "fullname",
       align: "center",
       width: 150,
-      sorter: (a: any, b: any) =>
-        a.ownerFullname.localeCompare(b.ownerFullname),
+      sorter: (a: any, b: any) => a.fullname.localeCompare(b.fullname),
     },
     {
       title: "Email",
@@ -224,7 +223,7 @@ export default function Client() {
       key: "email",
       align: "center",
       width: 150,
-      sorter: (a: any, b: any) => a.petName.localeCompare(b.petName),
+      sorter: (a: any, b: any) => a.email.localeCompare(b.email),
     },
     {
       title: "Phone",
@@ -240,7 +239,7 @@ export default function Client() {
       key: "gender",
       align: "center",
       width: 100,
-      sorter: (a: any, b: any) => a.petType.localeCompare(b.petType),
+      sorter: (a: any, b: any) => a.gender.localeCompare(b.gender),
     },
     {
       title: "Age",
@@ -248,7 +247,7 @@ export default function Client() {
       key: "age",
       align: "center",
       width: 100,
-      sorter: (a: any, b: any) => a.petType.localeCompare(b.petType),
+      sorter: (a: any, b: any) => a.age - b.age,
     },
     {
       title: "Address",
