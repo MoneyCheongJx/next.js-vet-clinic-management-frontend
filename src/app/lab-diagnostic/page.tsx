@@ -195,7 +195,7 @@ export default function LabDiagnostic() {
     setIsEditing(true);
     setCurrentAppointment(record);
 
-    const formattedDate = dayjs(record.appointmentDate);
+    const formattedDate = dayjs(record.date);
 
     form.setFieldsValue({
       ...record,
